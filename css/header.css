@@ -1,0 +1,195 @@
+body{
+  height: 100%;
+  padding-left: 150px;
+  transition: all 0.5s;
+}
+.mask1{
+
+  /*! mask-image: url(https://cdn.icon-icons.com/icons2/692/PNG/512/seo-social-web-network-internet_132_icon-icons.com_61506.png); */
+  mask-image: url(../img/h2.png);
+  mask-size: contain;
+  mask-repeat: no-repeat;
+}
+.mask1 img{
+  
+}
+header {
+  width: 150px;
+  height: 100%;
+  background-color: #eee;
+  position: fixed;
+  left: 0;
+  z-index: 9;
+}
+
+header .wrap {
+  max-width: none;
+  margin: initial;
+  padding-top: 20px;
+  height: 100%;
+}
+header .wrap::before{
+  content: "BRANXX CORPORATION";
+  position: absolute;
+  bottom: 20px;
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+  transform: translateY(-56PX) rotate(90deg);
+  z-index: 5;
+}
+header .wrap h1 {
+  font-size: 23px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  z-index: 5;
+}
+
+header .wrap h1 a {
+  
+}
+
+header .wrap ul.gnb {
+  position: fixed;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background-color:#eee;
+  left: -150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 1s;
+  z-index: 3;
+}
+header .wrap ul.gnb.moveShow{
+  left: 150px;
+}
+header .wrap ul.gnb>li {
+  
+  margin-bottom: 20px;
+}
+
+header .wrap ul.gnb>li h2 {
+  
+  margin-bottom: 10px;
+}
+
+header .wrap ul.gnb>li h2 a {
+  
+}
+
+header .wrap ul.gnb li ul.sub {
+  
+  display: flex;
+  flex-wrap: wrap;
+}
+
+header .wrap ul.gnb li ul.sub li {
+  width: 23%;
+}
+header .wrap ul.gnb li:nth-child(2) ul.sub li {
+  width: 50%;
+}
+
+header .wrap ul.gnb li ul.sub li a {
+  
+  font-size: 12px;
+  color: #999;
+}
+
+header .wrap ul.enb {
+  position: absolute;
+  left: -70px;
+  top: 20px;
+  display: flex;
+  z-index: 3;
+  transition:all 1s;
+}
+header .wrap ul.gnb.moveShow + ul.enb{
+  left: 130px;
+}
+header .wrap ul.enb li {
+  
+}
+
+header .wrap ul.enb li a {
+  display: block;
+  /*! position: absolute; */
+  /*! height: 40px; */
+  /*! top: calc(50% - 20px); */
+  /*! width: 100%; */
+  /*! display: flex; */
+  /*! flex-direction: column; */
+  /*! justify-content: center; */
+  /*! align-items: center; */
+  padding: 10px 20px;
+}
+
+header .wrap a.allmenu {
+  display: block;
+  position: absolute;
+  height: 30px;
+  top: calc(50% - 20px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0;
+  width: 30px;
+  left: calc(50% - 15px);
+  line-height: 0;
+  z-index: 5;
+}
+header .wrap a.allmenu::before{
+ content: "";
+ display: block;
+ width: 100%;
+ height: 3px;
+ background-color: #333;
+ transition: all 1s;
+ transform-origin: 50% 50%; 
+}
+header .wrap a.allmenu span{
+display: block;
+width: 100%;
+height: 3px;
+background-color: #333;
+transform: translateY(-3px);
+ transition: all 1s;
+  
+}
+header .wrap a.allmenu::after{
+ content: "";
+display: block;
+width: 100%;
+height: 3px;
+background-color: #333;
+transition: all 1s;
+transform-origin: 50% 50%;  
+}
+
+header .wrap a.allmenu.x::before{
+transform:translateY(14px) rotate(45deg);
+}
+header .wrap a.allmenu.x span{
+transform:translateY(-3px) translateX(-90px);
+opacity: 0;
+}
+header .wrap a.allmenu.x::after{
+transform:translateY(-13px) rotate(-45deg);
+}
+header .wrap::after{
+  content: "";
+  background-color: #eee;
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  transition: all 0.5s;
+}

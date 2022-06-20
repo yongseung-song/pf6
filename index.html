@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공통코딩-(주)브랜드엑스</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="css/reset.css" type="text/css">
+
+    <!-- 구글폰트:notosanskr -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"> 
+    
+    <link rel="stylesheet" href="css/common.css" type="text/css">
+    <link rel="stylesheet" href="css/header.css" type="text/css">
+    <link rel="stylesheet" href="css/title.css" type="text/css">
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+    <link rel="stylesheet" href="css/aside.css" type="text/css">
+    <link rel="stylesheet" href="css/footer.css" type="text/css">
+    <link rel="stylesheet" href="css/popup.css" type="text/css">
+    <link rel="stylesheet" href="css/responsive.css" type="text/css">
+    <!-- <script src="js/jquery-1.6.2.min.js"></script> -->
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+    </script>
+    <script>
+        $(document).ready(
+            function(){
+                // 서브메뉴 표시(햄버거버튼)
+                $("header .wrap a.allmenu").click(function(){
+                    // x변환
+                    $(this).toggleClass("x");
+                    // 대메뉴등장
+                    $("header .wrap ul.gnb").toggleClass("moveShow");
+                    return false;
+                });
+
+                //타이틀 첫번째 목록표시------------------------------------------
+                $("#title ul.slide li:eq(0)").addClass("currentSlide");
+                //타이틀리스트제목클릭시 해당li가 보이게 
+                $("#title ul.slide li").click(function(){
+                    $(this).addClass("currentSlide");
+                    $(this).siblings().removeClass("currentSlide");
+                });
+
+
+                // 타이틀영역위 대메뉴 배치---------------------------------------
+               // $("#title .wrap").prepend("<ul class='tMenu'><li><a href=''>1</a></li><li><a href=''>2</a></li><li><a href=''>3</a></li><li><a href=''>4</a></li><li><a href=''>5</a></li></ul>");
+                $("#title .wrap").prepend("<div class='tMenu'></div>");
+                $("header .gnb").clone().appendTo(".tMenu");
+                $(".tMenu .sub").remove();
+                
+                // a태그 상위로 이동
+                var n=1;
+                $(".tMenu li").each(function(){
+                    $(this).children().children().prependTo(".tMenu li:nth-child("+n+")");
+                    n++; //n의 값을 1씩 증가시켜라. 증감연산자
+                });
+                
+                //$(".tMenu li h2 a").prependTo(".tMenu  li");
+                $(".tMenu li h2").remove();
+
+                // 대메뉴갯수 정리.contact 이동
+                $(".tMenu li:eq(4)").remove();
+                //$(".tMenu li:eq(5) a").appendTo(".tMenu");
+                $(".tMenu li:eq(5) a").insertAfter(".tMenu");
+                $(".tMenu + a").text("Contact Us");
+
+                var transY=0; 
+                var fTogether=$("footer .together").offset().top-$(window).height();
+
+               
+                // 소개부분 스크롤이벤트 - 스크롤 > 고정 > 다시 스크롤 -----------------------------------
+                //console.log($("#introduction .right").offset());
+                    var introduction=$("#introduction").offset().top;
+                    var introductionTop=$("#introduction .right").offset().top;
+                    var introductionH=$("#introduction").innerHeight();
+                    var introductionRight = $("#introduction .right");
+                    var news=$("#news").offset().top;
+                    var winH=$(window).height();
+                    var windowTop=$(window).scrollTop();
+
+                    // 함계해요 우리와.
+                    var transY=0; 
+                    var fTogether=$("footer .together").offset().top-$(window).height();
+                    console.log("ftogether111: "+fTogether);
+
+                    $(window).scroll(function(){
+                        
+                        windowTop=$(window).scrollTop();
+
+
+ //공지사항창 줄어지게--------------------------------....
+                        var st=$(window).scrollTop();
+                        if(st>300){
+                            st=0
+                        }else{
+                            st=(300-st) / 300;
+                        }
+                        $("#showimage").css({"transform":"scale("+st+")","opacity":st});
+
+
+                        // contact크기,색조정원래로 && 로고이동
+                        if(windowTop<introduction){
+                            $("#title .tMenu + a").removeClass("contactMove");
+                            
+                        }
+                        if(windowTop>=introduction){
+                            $("#title .tMenu + a").addClass("contactMove");
+                        }
+
+//1 1200크기이상일 경우에만 소개우측 스크롤고정.해제가 되게끔 처리
+                        if($(window).width()>1200){
+                            // 1소개우측 고정 ----------------------------------------------------------
+                            if( windowTop >= introductionTop-50 && windowTop<news-winH ){
+                                introductionRight.removeClass("introPt");
+                                introductionRight.addClass("fixed");
+                                // contact크기,색조정
+                                $("#title .tMenu + a").addClass("contactMove");
+                            }
+
+                            // 뉴스위치시 소개우측  위로 이동
+                            if(windowTop>=news-winH){
+                                introductionRight.removeClass("fixed");
+                                introductionRight.addClass("introPt").css("top",introductionH-winH+50);
+                            
+                            }
+                            // 소개위치이전시 소개우측 고정해제
+                            if(windowTop<introductionTop-50){
+                                introductionRight.removeClass("fixed");
+                            }
+
+                         // 1 소개우측 고정 ----------------------------------------------------------
+                        }
+
+// 2함께해요 우리와 ------------------------------------------------------------------------------
+                        fTogether=$("footer .together").offset().top-$(window).height();
+                        console.log("ftogether: "+fTogether);
+
+                        //if($(window).scrollTop()>fTogether+$("footer .together").height()*0.66){
+                        if($(window).scrollTop()>fTogether){
+
+                            //  if(transY<=70){
+                            //     transY +=10;
+                            //  }
+                            // $("footer .together h2").stop().animate({"margin-top":-transY},1500);
+                            // console.log("transY:"+transY);
+
+                            /*
+                            $("footer .together h2").addClass("togetherHup");
+                            $("footer .together ").addClass("togetherBg");
+                            */
+                            scrollY = $(window).scrollTop() % fTogether;
+                            $("footer .together h2").css({"margin-top":-scrollY/2});
+                            $("footer .together").css({"background-size":"auto "+(100+scrollY/30)+"%"});
+                            
+
+                        }
+                        if($(window).scrollTop()<fTogether+$("footer .together").height()*0.66){
+    
+                            //  if(transY>=0){
+                            //     transY -=10;
+                            //  }
+                            // $("footer .together h2").stop().animate({"margin-top":-transY},1500);
+                            // console.log("transY:"+transY);
+
+                            /*
+                            $("footer .together h2").removeClass("togetherHup");
+                            $("footer .together ").removeClass("togetherBg");
+                            */
+                            // scrollY = $(window).scrollTop() % fTogether+$("footer .together").height()*0.66;
+                            // $("footer .together h2").stop().animate({"margin-top":scrollY},1500);
+                        }
+
+                    });
+
+                console.log("윈도우탑"+windowTop);
+
+                $(window).resize(function(){
+                    winH=$(window).height();
+                    //windowTop=$(window).scrollTop();
+                    introduction=$("#introduction").offset().top;
+                    introductionTop=$("#introduction .right").offset().top;
+                    introductionH=$("#introduction").innerHeight();
+                    console.log("윈도우탑"+windowTop);
+                });
+
+ //3 브랜드 오버효과 -----------------------------------------------------------------
+                $("#brand ul li a").hover(
+                    function(){
+                        $(this).children("p").removeClass("hide");
+                        $(this).addClass("over");
+                        $(this).children(".white").remove();
+                        $(this).children("h3").clone().prependTo(this).addClass("white");
+                        $(this).children(".white").children("img").attr("src","img/mix2mix_white.png");
+                    },
+                    function(){
+                        $(this).children("p").addClass("hide"); 
+                        $(this).removeClass("over"); 
+                        $(this).children(".white").remove(); 
+
+                    }
+                );
+
+            }
+        );
+    </script>
+    <script type="text/javascript" src="js/popup.js"></script>
+
+    <!-- slick 브랜드오피스 -->
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <!-- <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/> -->
+    <!-- <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> -->
+	<script type="text/javascript" src="js/slick.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+    <!--  브랜드오피스 드래그시 진행바크기 변화 -->
+    <script>
+        $(function(){
+            $('.brandOfficeSlide').slick({
+                centerMode: true,
+                centerPadding: '100px',
+                arrows:false
+            });
+
+            $("#brandoffice .wrap").append("<span class='progressive'></span>");
+
+            var progressiveW=$("#brandoffice .wrap .progressive").width()/6;
+            $("#brandoffice .wrap .progressive").css("width",progressiveW);
+            console.log("진행바크기1/6:" + $("#brandoffice .wrap .progressive").width());
+
+            // 드래그해서 이동시 작동
+            var n;
+            $('#brandoffice .wrap').on('mouseout',function(){
+                console.log("브랜드오피스wrap 마우스out");
+                n=Number($(this).children("li.slick-current").attr("data-slick-index"))+1;
+                // Number();문자타입을 숫자타입으로 전환
+                $("#brandoffice .wrap .progressive").css("width",progressiveW*n); 
+
+            });
+
+            $('.slick-track').on('click mouseleave',function(){
+
+                n=Number($(this).children("li.slick-current").attr("data-slick-index"))+1;
+                // Number();문자타입을 숫자타입으로 전환
+                $("#brandoffice .wrap .progressive").css("width",progressiveW*n); 
+                console.log(".slick-track 마우스리브");
+                /* ver2
+                n=Number($(this).children("li.slick-current").attr("data-slick-index"))+1;
+                // Number();문자타입을 숫자타입으로 전환
+                
+                $("#brandoffice .wrap .progressive").css("width",progressiveW*n); 
+                */
+                
+                /* ver1
+                if($(this).children("li").hasClass("slick-current") && $(this).children("li").attr("data-slick-index")=="0"){
+                    alert(1);
+                    n=1;
+                    $("#brandoffice .wrap .progressive").css("width",progressiveW*n); 
+                }
+                if($(this).children("li").hasClass("slick-current") && $(this).children("li").attr("data-slick-index")=="1"){
+                    alert(2);
+                    n=2;
+                    $("#brandoffice .wrap .progressive").css("width",progressiveW*n); 
+                }
+                if($(this).children("li").hasClass("slick-current") && $(this).children("li").attr("data-slick-index")=="2"){
+                    alert(3);
+                    n=3;
+                    $("#brandoffice .wrap .progressive").css("width",progressiveW*n); 
+                }*/
+            });
+            // $('.slick-track').on('click mouseleave',function(){
+            //      console.log("드래그마침");
+            // });
+
+        })
+    </script>
+    <script>
+        $(function(){
+            $(document).ready(function(){
+                $('#showimage .popSlide').slick({
+                    dots: false,
+                    arrows:false,
+                    infinite: true,
+                    speed: 300,
+                    slidesToShow: 1,
+                    autoplay: true,
+                    autoplaySpeed: 2000,
+                    adaptiveHeight: true
+                });
+            });
+        });
+    </script>	
+	<script>
+        $(function(){
+            $("aside a.mode").click(function(){
+                $(this).toggleClass("dark");
+                $("body").toggleClass("bodyDark");
+                return false;
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- 상단영역 -->
+    <header id="header">
+        <div class="wrap" >
+            <h1 class="h1">
+                <a href="index.html">Brandx</a>
+                
+            </h1>
+            <ul class="gnb">      
+                <li>
+                    <h2><a href="">Brandx</a></h2>
+                    <ul class="sub">
+                        <li><a href="">about</a></li>
+                        <li><a href="">Identity</a></li>
+                    </ul>    
+                </li>
+                <li>
+                    <h2><a href="#">Brand</a></h2>
+                    <ul class="sub">
+                        <li><a href="">젝시믹스</a></li>
+                        <li><a href="">믹스투믹스</a></li>
+                        <li><a href="">휘아</a></li>
+                        <li><a href="">국민상점</a></li>
+                        <li><a href="">포켓도시락</a></li>
+                        <li><a href="">닥터셀팜</a></li>
+                        <li><a href="">거꾸로당</a></li>
+                        <li><a href="">국민피티</a></li>
+                        <li><a href="">젤라또팩토리</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h2><a href="#">News</a></h2>
+                </li>
+                <li>
+                    <h2><a href="#">Ir</a></h2>
+                    <ul class="sub">
+                        <li><a href="">공시정보</a></li>
+                        <li><a href="">IR자료</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h2><a href="#">Ethics</a></h2>
+                </li>
+                <li>
+                    <h2><a href="#">Career</a></h2>
+                </li>
+                <li>
+                    <h2><a href="#">Contact</a></h2>
+                    <ul class="sub">
+                        <li><a href="">문의하기</a></li>
+                        <li><a href="">지원하기</a></li>
+                        <li><a href="">협력업체지원</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="enb">
+                <li><a href="">kr</a></li>
+                <li><a href="">en</a></li>
+                <li><a href="">cn</a></li>
+            </ul>
+            <a href="" class="allmenu">전체메뉴보기<span></span></a>
+        </div>    
+    </header>
+    <!-- 타이틀영역 -->
+    <div id="title">
+        <div class="wrap">
+            <ul class="slide">
+                <li>
+                    <h2 class="p">Chang</h2>
+                    <p class="h1">작은변화가당신을 새로운 삶의시작으로 이끕니다</p>
+                </li>
+                <li>
+                    <h2 class="p">Imagination</h2>
+                    <p class="h1">브랜드엑스는 무한한상상력으로 제품의가치를 발견합니다</p>
+                </li>
+                <li>
+                    <h2 class="p">Passion</h2>
+                    <p class="h1">제품 R&amp;D 열정이우리를 새로운 세상밖으로 이끌어 냅니다</p>
+                </li>
+                <li>
+                    <h2 class="p">Daily</h2>
+                    <p class="h1">브랜드엑스는당신의 일상 속 가치를높여주고자 합니다</p>
+                </li>
+            </ul>
+            <span class="control"><a href=""></a><a href=""></a></span>
+            <div id="showimage">
+                <ul class="popSlide">
+                    <li class="popSlide1">
+                        <h2 class="h2">2022년도<span class="block"></span> IR제도</h2>
+                        <p class="p">2022년 IR Book 엑스코퍼레이션<span class="block"></span> IR자료를 게재합니다</p>
+                        <a href="" class="go">바로가기</a>
+                    </li>
+                    <li class="popSlide2"><a href=""><img src="img/popup2.jpg" alt="1"></a></li>
+                    <li class="popSlide3"><a href=""><img src="img/popup3.jpg" alt="2"></a></li>
+                </ul>
+               
+                <span class="wrapClose">
+                    <input type="checkbox" id="Notice"  name="Notice">오늘 하루 창열지 않기
+                    <a class="btn_close"  onclick="closeWin();hidebox(); return false;">창닫기</a>
+                </span>
+                <script language="JavaScript" type="text/javascript">
+                    function closeWin(){
+                       var chk = document.getElementById('Notice');
+                       if ( chk.checked ) {
+                             setCookie( "Notice", "done" , 1); // 1 은 1일을 뜻함.
+                        }
+                    }
+                   if ( getCookie( "Notice" ) == "done" ) {
+                       hidebox();
+                   }
+                 </script>
+            </div>
+        </div>
+    </div>
+    <!-- 내용영역 -->
+    <!-- 비전 -->
+    <main>
+        <!-- 소개 -->
+        <section id="introduction" class="padding-t60 padding-b60">
+            <div class="wrap">
+                <div class="right">
+                    <hgroup>
+                        <h2 class="h6">Brand eXperience Corporation</h2>
+                        <h3 class="h2">Make a Daily Routine.</h3>
+                    </hgroup>
+                    <p class="p">브랜드엑스는 최고의 브랜드와 제품을 만들어 내는 제품 R&D 전문 기업입니다. 온라인에 최적화된 브랜드를 연구·개발하고, SNS 기반 마케팅 노하우를 보유한 온라인 미디어 커머스 기업입니다.</p>
+                    <p class="p">일상에 가치를 더해 줄 제품을 개발해 삶을 풍요롭게 만들어 나가려고 합니다. 브랜드엑스는 제품력으로 승부합니다. 출시하는 모든 제품을 사무공간 내 R&D센터와 샘플실에서 테스트를 거쳐 세상에서 단하나 뿐인 제품을 만들어 내어 기업의 성장동력을 만들어 내고 있습니다.</p>
+                    <a href="" class="more">BRAND X 더 알아보기</a>
+                </div>                 
+            </div>
+        </section>
+
+        <!-- 비전 -->
+        <section id="news" class="padding-t60 padding-b60">
+            <div class="wrap">
+               <h2 class="hide">브랜드엑스코퍼레이션 Brand X</h2>
+               <article>
+                   <hgroup>
+                       <h3 class="h6"><a href="">Brand X, News</a></h3>
+                       <h4 class="h3">브랜드엑스코퍼레이션, 골프아카데미 큐이디(QED)와 업무협약 체결 </h4>
+                   </hgroup>
+                   <p class="p">브랜드엑스코퍼레이션은 골프 시뮬레이터 개발과 아카데미 사업을 전개하는 ‘큐이디(QED)’와 업무협약을 체결했다. 양사는 이번 협약으로 △'QED 골프아카데미' 내 MD공간을 통한 판매채널 확대 △양사 고객층 및 접점 증대 △영골퍼 시장 공략을 위한 홍보 및 마케팅 협력 등에 힘을 모을 계획이다.</p>
+                   <a href="" class="more">더 알아보기</a>
+               </article>
+               <article>
+                    <hgroup>
+                        <h3 class="h6"><a href="">Brand X, IR</a></h3>
+                        <h4 class="h3">브랜드엑스코퍼레이션 IR 정보</h4>
+                    </hgroup>
+                   <p class="p">-브랜드엑스코퍼레이션 제4기 결산공고 </p>
+                   <a href="" class="more">더 알아보기</a>
+               </article>
+               <article>
+                   <hgroup>
+                        <h3 class="h6"><a href="">브랜드엑스코퍼레이션은 이렇게 일해요.</a></h3>
+                        <h4 class="h3">브랜드엑스코퍼레이션은
+                            이렇게 일해요.</h4>
+                    </hgroup>
+                    <p class="p">브랜드엑스는 수평적인 조직 문화를 만들기 위해 호칭을 ‘프로’로 통일하고 있습니다. 직급에 상관없이 자유롭게 의견을 제시하고 업무 기여도에 따라 파격적인 승급이 가능하도록 하기 위함입니다. </p>
+                    <a href="" class="more">더 알아보기</a>
+               </article>
+            </div>
+        </section>
+
+        <!-- brand -->
+        <section id="brand" class="padding-t60 padding-b60">
+            <div class="wrap">
+                <h2 class="hide">brand</h2>
+                <ul>
+                    <li>
+                        <a href="">
+                            <h3 class="h4"><img src="img/xexymix_logo.png" alt=""></h3>
+                            <p class="p hide">
+                                Xexymix is Korea No.1 Yoga Wear and<br>
+                                Athlelesure Brand. This brand is<br>
+                                drawing attention all over the world.
+                            </p>
+                            <p class="detail hide">자세히 보기</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <h3 class="h4"><img src="img/whiaLogo01.png" alt=""></h3>
+                            <p class="detail-desc eng hide">
+                                Whia is meaning 輝雅(Bright/clean).<br>
+                                It is first ‘Clean Living Brand’ in Korea.
+                            </p>
+                            <p class="detail hide">자세히 보기</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <h3 class="h4"><img src="img/gelato_ci_b.png" alt=""></h3>
+                            <p class="detail-desc eng hide">
+                                Gelato factory is a special brand<br>
+                                that provides you with new nails.
+                            </p>
+                            <p class="detail hide">자세히 보기</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <h3 class="h4"><img src="img/mix2mix_black.png" alt=""></h3>
+                            <p class="detail-desc eng hide">
+                                Mix2mix is the first athleisure<br>
+                                contemporary brand in korea. <br>
+                                This brand is very popular in 1020s.
+                            </p>
+                            <p class="detail hide">자세히 보기</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <h3 class="h4"><img src="img/dgy-logo.png" alt=""></h3>
+                            <p class="detail-desc eng hide">
+                                Dr.Cellpharm is a special brand<br>
+                                that leading a concept of counselling<br>
+                                by doctor for health and beauty.
+        
+                            </p>
+                            <p class="detail hide">자세히 보기</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <h3 class="h4"><img src="img/pocket_balck.png" alt=""></h3>
+                            <p class="detail-desc eng hide">
+                                Pocketdosirak is a small frozen lunch<br>
+                                box brand. This brand have been the<br>most
+                                sold in korea at this market.
+                            </p>
+                            <p class="detail hide">자세히 보기</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <h3 class="h4"><img src="img/3care_black.png" alt=""></h3>
+                            <p class="detail-desc eng hide">
+                                KookminShop is a platform that offers the products<br>
+                                our need according to various lifestyles.<br>
+                                We want to make my daily life more new and enjoyable.
+                            </p>
+                            <p class="detail hide">자세히 보기</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <h3 class="h4"><img src="img/pt_white.png" alt=""></h3>
+                            <p class="detail-desc eng hide">
+                                Wannaglam is a health and diet management brand.<br>
+                                It will be launched soon as a community mobile app.
+                            </p>
+                            <p class="detail hide">자세히 보기</p>
+                        </a>
+                    </li>
+                </ul>
+                <a href="" class="more">더 알아보기</a>
+            </div>
+        </section>
+
+        <!-- brand office -->
+        <section id="brandoffice" class="padding-t60 padding-b60">
+            <div class="wrap">
+               <h2>brandoffice</h2>
+               <ul class="brandOfficeSlide">
+                   <li><img src="img/office_1.jpg" alt=""></li>
+                   <li><img src="img/office_2.jpg" alt=""></li>
+                   <li><img src="img/office_3.jpg" alt=""></li>
+                   <li><img src="img/office_4.jpg" alt=""></li>
+                   <li><img src="img/office_5.jpg" alt=""></li>
+                   <li><img src="img/office_6.jpg" alt=""></li>
+               </ul>
+            </div>
+        </section>
+    </main>
+    <aside>
+        <a class="mode">Mode</a>
+    </aside>
+    <!-- 하단영역 -->
+    <footer class="padding-t60">
+        <div class="wrap">
+           <h1><a href=""><img src="https://www.brandxcorp.com/web/upload/images/footer_logo_black.png" alt=""></a></h1>
+           <address>서울시 성동구 뚝섬로1길 63 영창디지털타워 6F, 12F, 16F<span class="block"></span>
+            ㈜브랜드엑스코퍼레이션 <br>
+            <span class="engAddress">Opening hours. am 9:30 - pm 6:30<br>
+            Lunch break. pm 12:30 - pm 1:30<br>
+            Sat, Sun Off </span>
+            </address>
+           <ul class="fnb">
+               <li><a href="">회사소개</a></li>
+               <li><a href="">브랜드</a></li>
+               <li><a href="">뉴스</a></li>
+               <li><a href="">공시정보</a></li>
+               <li><a href="">채용</a></li>
+               <li><a href="">개인정보처리방침</a></li>
+           </ul>
+           <div class="together">
+               <h2 class="h2">함께해요, 우리와.</h2>
+               <p class="p">실패를 두려워 하지 않는 도전정신 <span class="block"></span>
+                함께 일하고, 함께 성장하는 브랜드엑스코퍼레이션</p>
+           </div>
+        </div>
+    </footer>
+</body>
+</html>

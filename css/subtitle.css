@@ -1,0 +1,37 @@
+#subtitle{
+
+}
+#subtitle .wrap{
+  height: 330px;
+  padding-left: 200px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ccc;
+}
+#subtitle.historyT .wrap{
+  
+  padding: initial;
+  text-align: center;
+}
+
+#subtitle{
+
+}
+
+#subtitle hgroup{
+
+}
+#subtitle hgroup h2{
+
+}
+
+#subtitle hgroup h3{
+  line-height: 2.5;
+  font-weight: 500;
+}
+#subtitle p{
+
+}
+

@@ -1,0 +1,84 @@
+@media screen and (max-width:768px){
+/* common   */
+  .h3{
+  font-size: calc(33px * 0.7) !important;
+  } 
+  .h4{
+  font-size: calc(53px * 0.7);
+  }
+  section:nth-child(1) .wrap{
+  padding: initial;
+  }
+  .history{
+  padding: initial !important;
+  text-align: center;
+  }
+/* common   */
+  #subtitle .wrap{
+  padding-left: initial;
+  height: 42.96875vw;
+  text-align: center;
+  }
+  #subtitle hgroup h3{
+  font-size: calc(50px * 0.7);
+  line-height: calc(2.5 * 0.7);
+  }
+  .wrap{
+  padding: initial;
+  }
+
+/*  철학html  */
+  #philosophy h2{
+  position: static;
+  color: #333;
+  }
+  #philosophy h2::after{
+  background-color: #ccc;
+  }
+  #philosophy h3 + .p{
+  margin-bottom: calc(50px * 0.7);
+  }
+  #philosophy ul.contents li h4{
+    
+  line-height: calc(4 * 0.7);
+  }
+  #philosophy ul.contents li h4::before{
+  font-size: calc(70px * 0.7);
+  }
+  #philosophy ul.contents li p{
+  padding-left: calc(40px * 0.6);
+  }
+  #philosophy ul.contents li p:nth-of-type(1){
+  padding-top: calc(40px * 0.7);
+  }
+  
+/*  히스토리html  */
+  #history .history + p{
+    
+  line-height: 1.5;
+  margin-top: 20px;
+  padding: 0 20px;
+  font-size: 16.5px;
+  }
+  #history div.all article{
+    
+  padding-top: calc(60px * 0.7);
+  display: block;
+  padding-bottom: calc(60px * 0.7);
+  }
+  #history div.all h4{
+  margin: initial;
+  text-align: center;
+  margin-bottom: 16px;
+  }
+}
+
+/* 태블릿 */
+
+@media screen and (max-width:1024px){
+
+}
+
+
+
+

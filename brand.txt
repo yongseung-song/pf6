@@ -1,0 +1,95 @@
+<!-- brand -->
+        <section id="brand" class="padding-t60 padding-b60">
+            <div class="wrap">
+                <h2 class="hide">brand</h2>
+                <ul>
+                    <li>
+                        <a href="">
+                            <h3 class="h4"><img src="img/xexymix_logo.png" alt=""></h3>
+                            <p class="p">
+                                Xexymix is Korea No.1 Yoga Wear and<br>
+                                Athlelesure Brand. This brand is<br>
+                                drawing attention all over the world.
+                            </p>
+                             <a href="" class="detail">자세히 보기</a>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <h3 class="h4"><img src="img/whiaLogo01.png" alt=""></h3>
+                            <p class="detail-desc eng">
+                                Whia is meaning 輝雅(Bright/clean).<br>
+                                It is first ‘Clean Living Brand’ in Korea.
+                            </p>
+                             <a href="" class="detail">자세히 보기</a>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <h3 class="h4"><img src="img/gelato_ci_b.png" alt=""></h3>
+                            <p class="detail-desc eng">
+                                Gelato factory is a special brand<br>
+                                that provides you with new nails.
+                            </p>
+                             <a href="" class="detail">자세히 보기</a>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <h3 class="h4"><img src="img/mix2mix_black.png" alt=""></h3>
+                            <p class="detail-desc eng">
+                                Mix2mix is the first athleisure<br>
+                                contemporary brand in korea. <br>
+                                This brand is very popular in 1020s.
+                            </p>
+                             <a href="" class="detail">자세히 보기</a>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <h3 class="h4"><img src="img/dgy-logo.png" alt=""></h3>
+                            <p class="detail-desc eng">
+                                Dr.Cellpharm is a special brand<br>
+                                that leading a concept of counselling<br>
+                                by doctor for health and beauty.
+        
+                            </p>
+                             <a href="" class="detail">자세히 보기</a>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <h3 class="h4"><img src="img/pocket_balck.png" alt=""></h3>
+                            <p class="detail-desc eng">
+                                Pocketdosirak is a small frozen lunch<br>
+                                box brand. This brand have been the<br>most
+                                sold in korea at this market.
+                            </p>
+                             <a href="" class="detail">자세히 보기</a>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <h3 class="h4"><img src="img/3care_black.png" alt=""></h3>
+                            <p class="detail-desc eng">
+                                KookminShop is a platform that offers the products<br>
+                                our need according to various lifestyles.<br>
+                                We want to make my daily life more new and enjoyable.
+                            </p>
+                             <a href="" class="detail">자세히 보기</a>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <h3 class="h4"><img src="img/pt_white.png" alt=""></h3>
+                            <p class="detail-desc eng">
+                                Wannaglam is a health and diet management brand.<br>
+                                It will be launched soon as a community mobile app.
+                            </p>
+                            <a href="" class="detail">자세히 보기</a>
+                        </a>
+                    </li>
+                </ul>
+                <a href="" class="more"></a>
+            </div>
+        </section>

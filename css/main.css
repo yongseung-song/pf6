@@ -1,0 +1,445 @@
+main{
+}
+section{
+}
+#mainFooter{
+  height: 100%;
+}
+section>.wrap{
+  box-sizing: border-box;
+}
+
+/* 1 introduction-------------------------------------------------------------------1 */
+/* main section:not(:nth-child(1)){
+  display: none;
+} */
+#introduction{
+  padding-top: 240px;
+  transition: all 0.5s;
+  position: relative;
+}
+.bgeee{
+  background-color: red;
+}
+#introduction .wrap{
+  display: flex;
+  justify-content: space-between;
+  /*! padding-left: 3%; */
+  box-sizing: border-box;
+  max-width: 100%;
+}
+#introduction .wrap::before{
+content:"";
+display: block;
+width: 45%;
+height: 2100px;
+margin-left: 40px;
+background-image: url(https://www.brandxcorp.com/web/upload/images/img_main01.jpg),
+  url(https://www.brandxcorp.com/web/upload/images/img_main02.jpg),
+  url(https://www.brandxcorp.com/web/upload/images/img_main03.jpg),
+  url(https://www.brandxcorp.com/web/upload/images/img_main04.jpg),
+  url(https://www.brandxcorp.com/web/upload/images/img_main05.jpg);
+background-size: 100%,66%,75%,77%,100%;
+background-position-x: left,right,left,right,left;
+background-repeat: no-repeat;
+background-position-y: 0,338px,850px,1045px,1400px;
+}
+#introduction .right{
+  width: 440px;
+  box-sizing: border-box;
+  padding-right: 55px;
+}
+#introduction hgroup{
+
+}
+#introduction h2{
+
+}
+#introduction h3{
+  margin: 30px 0;
+  line-height: 1.6;
+}
+#introduction .right p{
+  line-height: 2;
+}
+.fixed{
+  position: fixed;
+  top: 50px !important;
+  right: 0;
+}
+.introPt{
+  position: absolute;
+  right: 0;
+}
+#introduction .right a.more{
+  position: absolute;
+  bottom: -20px;
+  
+  font-size: 12px;
+  color: red;
+}
+#introduction .right a.more::before{
+ content: "";
+ display: block;
+ border: transparent ;
+ border-right:1px solid red;
+ width: 20px;
+ height: 20px;
+ position: absolute;
+ right: -30%;
+ bottom: 0;  
+ transform-origin: 100% 100%;
+ transform: rotate(-45deg);
+ transition: all 0.5s;
+}
+#introduction .right a.more::after{
+  content: "";
+  width: 130%;
+  display: block;
+  border-bottom:1px solid red; 
+  margin-top:10px;
+  transition: all 0.5s;
+}
+#introduction .right a.more:hover::before{
+   right: -40%;
+}
+#introduction .right a.more:hover::after{
+    width: 140%;
+}
+#introduction .right::after{
+  content: "";
+  display: block;
+  width: 100%;
+  height: 200px;
+  margin-top: 20px;
+  background-image: url(https://www.brandxcorp.com/web/upload/images/img_circle01.png),url(https://www.brandxcorp.com/web/upload/images/img_circle02.png),url(https://www.brandxcorp.com/web/upload/images/img_circle03.png);
+  background-size: 35%,35%,35%;
+  background-position-x: 0,44%,88%;
+  background-repeat: no-repeat;
+  background-position-y: center;
+}
+
+
+/* 뉴스------------------------------------------------------------------------------------1end */
+#news{
+  /*! transition: all 0.7s; */
+  /*! border: 3px solid; */
+}
+#news .wrap{
+  max-width: 900px;
+  display: flex;
+  gap: 40px;
+}
+
+#news h2 {
+
+}
+#news article{
+  
+  width: calc(100% / 3);
+  position: relative;
+  padding-bottom: 70px;
+}
+#news article hgroup{
+  position: relative;
+}
+#news article hgroup::before{
+  content: "";
+  display: block;
+  height: 350px;
+  background-color: #eee;
+}
+#news article hgroup h3 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 350px;
+}
+#news article hgroup h3::before{
+  content: "";
+  transform-origin: 0 100%;
+  transform: scale(0.7) translateX(-20px) translateY(-17px) rotate(90deg);
+  display: block;
+  position: absolute;
+  color: red;
+}
+#news article:nth-of-type(1) hgroup h3::before{
+  content: "Brand X, News";
+}
+#news article:nth-of-type(2) hgroup h3::before{
+  content: "Brand X, IR";
+}
+#news article:nth-of-type(3) hgroup h3::before{
+  content: "Brand X, Career";
+}
+#news article hgroup h3 a{
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+}
+#news article hgroup h4 {
+
+  font-size: 20px;
+  line-height: 1.5;
+  margin-top: 30px;
+  height: 120px;
+}
+#news article p{
+  line-height: 1.5;
+  text-align: justify;
+}
+#news article a.more{
+  border: 1px solid;
+  height: 40px;
+  display: block;
+  width: 100px;
+  font-size: 12px;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 20px;
+  position: absolute;
+  bottom: 0;
+}
+
+/* 브랜드------------------------------------ */
+#brand {
+  
+}
+#brand .wrap {
+  max-width: 100%;
+}
+#brand h2 {
+  
+}
+#brand ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+#brand ul li {
+  width: calc(100% / 2);
+  height: 15.10416666666667vw;
+  overflow: hidden;
+}
+#brand ul li a {
+  display: block;
+  height: 100%;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 14px;
+  padding-left: 20px;
+}
+#brand ul li a::before{
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: all 0.5s;
+}
+#brand ul li a:hover::before{
+ background-color: rgba(0,0,0,0.5);
+}
+
+#brand ul li:nth-child(1) a{
+  background-image: url(../img/thumb_xexy.jpg);
+}
+#brand ul li:nth-child(2) a{
+  background-image: url(../img/thumb_whia.jpg);
+}
+#brand ul li:nth-child(3) a{
+  background-image: url(../img/thumb_gelato.jpg);
+}
+#brand ul li:nth-child(4) a{
+  background-image: url(../img/thumb_mix.jpg);
+}
+#brand ul li:nth-child(5) a{
+  background-image: url(../img/thumb_madi.jpg);
+}
+#brand ul li:nth-child(6) a{
+  background-image: url(../img/thumb_pocket.jpg);
+}
+#brand ul li:nth-child(7) a{
+  background-image: url(../img/thumb_3care.jpg);
+}
+#brand ul li:nth-child(8) a{
+  background-image: url(../img/thumb_pt.jpg);
+}
+#brand ul li a h3 {
+  height: 20px;
+  width: 91px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 3;
+}
+#brand ul li a h3.white {
+  position: static;
+  margin-bottom: 20px; 
+  animation-name: left;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+@keyframes left{
+  0%{
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  
+}
+#brand ul li:nth-child(1) a h3{
+  
+  width: 115px;
+}
+#brand ul li:nth-child(2) a h3{
+  
+  width: 78px;
+}
+#brand ul li:nth-child(3) a h3{
+  
+  width: 86px;
+}
+#brand ul li:nth-child(4) a h3{
+  
+  width: 96px;
+}
+#brand ul li:nth-child(5) a h3{
+  
+  width: 156px;
+}
+#brand ul li:nth-child(6) a h3{
+  
+}
+#brand ul li:nth-child(7) a h3{
+  
+}
+#brand ul li:nth-child(8) a h3{
+  width: 120px;
+}
+#brand ul li:nth-child(9) a h3{
+  
+}
+#brand ul li a h3.white img{
+  width: 100%;
+  display: block;
+}
+#brand ul li a h3.white::after{
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: -12px;
+  width: 38px;
+  border-top: 3px solid #fff;
+}
+#brand ul li a:hover h3.white::after{
+  animation-name:h2right; 
+  animation-duration: 0.5s;
+  animation-direction: reverse;
+  animation-fill-mode: forwards;
+/*   animation-timing-function: ease-out; */
+  t
+}
+@keyframes h2right{
+  0%{
+   left: 0px; 
+   opacity: 1;
+  }
+  100%{
+    width: 0px;
+    left: 10px;
+    opacity: 0;
+  }
+}
+#brand ul li a p {
+  color:#000;
+  position: relative;
+}
+#brand ul li a.over p {
+  color:#000;
+  position: relative;
+  animation-name: up;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+  animation-timing-function: ease-out;
+}
+@keyframes up{
+  0%{
+    opacity: 0;
+    transform-origin: 0% 100%;
+    transform: scale(0.8) translateY(0px);
+  }
+  100%{
+    color:#fff;
+    opacity: 1;
+    transform:scale(1) translateY(-20px);
+  }
+}
+
+
+#brand ul li a a.detail {
+  
+}
+#brand a.more {
+  border: 1px solid #000;
+  line-height: 40px;
+  display: block;
+  width: 200px;
+  border-radius: 20px;
+  margin: 0 auto;
+  margin-top: 50px;
+  text-align: center;
+  font-size: 13px;
+  transition: all 0.5s;
+}
+#brand a:hover.more{
+  background-color: #000;
+  color: #fff;
+}
+
+/* 브랜드오피스 */
+#brandoffice{
+  display: flex;
+  justify-content:end;
+}
+#brandoffice .wrap{
+  width: 900px;
+  margin: initial;
+}
+#brandoffice h2{
+  line-height: 3;
+  color: orangered;
+  text-transform: uppercase;
+}
+#brandoffice ul.brandOfficeSlide{
+  
+}
+#brandoffice ul.brandOfficeSlide li{
+  transform: translateX(-100px);
+  padding-right: 50px;
+  box-sizing: border-box;
+}
+#brandoffice ul.brandOfficeSlide li img{
+  
+}
+#brandoffice ul.brandOfficeSlide li img:hover{
+  
+}
+.progressive{
+  border-top: 2px solid #ccc; 
+  display: block;
+  margin-top:40px;
+  width: calc(100% - 250px);
+  transition: all 0.5s;
+}
